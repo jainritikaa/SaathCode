@@ -1,0 +1,61 @@
+/* Tailwind CSS Base, Components, and Utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root Variables for Light and Dark Modes */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+/* Global Body Styles */
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    ),
+    rgb(var(--background-start-rgb));
+  font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+  margin: 0;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Utility Classes */
+@layer utilities {
+  /* Utility class for balanced text wrapping */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Utility class for gradient background */
+  .bg-gradient {
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(var(--background-end-rgb))
+      ),
+      rgb(var(--background-start-rgb));
+  }
+
+  /* Utility class for smooth color transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
