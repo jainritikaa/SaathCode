@@ -37,9 +37,9 @@ export default function Home() {
           </div>
 
           {/* Second Column */}
-          <div className="bg-white bg-opacity-30 p-4 rounded-lg xl:w-1/3 lg:w-1/3 md:w-1/2">
+          <div className="p-4 rounded-lg xl:w-1/3 lg:w-1/3 md:w-1/2">
             <h3 className="text-xl font-semibold mb-2">Second Column</h3>
-            <p className="text-gray-700">Here Goes the Chat.</p>
+            <p className="text-gray-700">Here Goes the Chat</p>
           </div>
         </div>
       </div>

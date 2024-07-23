@@ -9,8 +9,8 @@
 
 @layer base {
   :root {
-    --background: #eceadf;
-    --accent: #d4b36d;
+    --background: #ededed;
+    --accent: #79b4fd;
     --margins: #aba89e4a;
     --content: #272935;
   }
@@ -33,11 +33,12 @@
   .custom-hover-effect:hover {
     background-color: rgba(0, 0, 0, 0.1);
     transform: scale(1.01);
+    border-radius: 50%;
   }
 
   .active-tab {
     background-color: var(--accent);
-    border-radius: 50%;
+    border-radius: 100%;
     margin: 2px; /* Add a very light margin */
   }
 

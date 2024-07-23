@@ -15,29 +15,21 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ user, isSignedIn, imageUrl, onOpenRegister }) => {
   return (
-    <div className="flex items-center justify-between mt-2 mb-4 px-8 py-2 sticky top-0 z-10">
+    <div className="flex items-center justify-between mt-2 mb-4 px-20 py-2 sticky top-0 z-10">
       {/* Input on the left with adjusted width */}
-      <div className="flex items-center">
-        <Image src={searchImage} alt="Search" width={15} height={20} />
-        <Input
-          className="w-80 border-none focus:ring-0 ml-2"
-          placeholder="Search book name, author, publisher"
-        />
+      <div className="flex flex-col flex-wrap items-left space-y-1">
+        <h1 className="text-4xl font-bold" >Hello, <span>{user}</span></h1>
+        <p className="text-slate-600">Code with friends, assign tasks, discuss and much more.</p>
       </div>
 
       {/* Avatar, username, and possibly a button on the right */}
       <div className="flex items-center space-x-4">
         {isSignedIn ? (
-          <>
-            <Avatar className="w-8 h-8">
-              {imageUrl ? (
-                <AvatarImage src={imageUrl} alt="User Avatar" />
-              ) : (
-                <AvatarFallback>CN</AvatarFallback>
-              )}
-            </Avatar>
-            <p className="font-bold text-sm">{user}</p>
-          </>
+           <Button 
+           className="bg-gray-800 text-white rounded-3xl"
+         >
+           Contribute!
+         </Button>
         ) : (
           <Button 
             onClick={onOpenRegister} 

@@ -24,7 +24,7 @@ export const Navbar = () => {
     };
 
     return (
-        <div className="fixed left-0 top-0 h-[calc(100vh-40px)] w-sm flex flex-col items-center justify-between bg-background border-r-color pb-6 pt-0 mt-3">
+        <div className="fixed left-0 top-0 h-[calc(100vh-40px)] w-sm flex flex-col items-center justify-between bg-background border-r-color pb-8 pt-0 mt-3">
             <div className="p-4">
                 <Image src={logoImage} alt="Home" width={34} height={2} />
             </div>
