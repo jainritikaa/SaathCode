@@ -11,9 +11,9 @@ const handler = app.getRequestHandler();
 app.prepare().then(() => {
   const httpServer = createServer((req, res) => {
     handler(req, res).catch((err) => {
-      console.error('Error handling request:', err);
+      console.error("Error handling request:", err);
       res.statusCode = 500;
-      res.end('Internal Server Error');
+      res.end("Internal Server Error");
     });
   });
 
@@ -24,17 +24,35 @@ app.prepare().then(() => {
     },
   });
 
+  let buttonState = false;
+
   io.on("connection", (socket) => {
     console.log("A new connection");
 
+    // Emit the current button state to the newly connected client
+    socket.emit("buttonState", buttonState);
+
+    // Handle button press events from clients
+    socket.on("buttonPress", (state) => {
+      buttonState = state;
+      io.emit("buttonState", buttonState); // Broadcast the updated state to all clients
+      console.log(`Button state changed to: ${buttonState}`);
+    });
+
+    // Handle client disconnect
     socket.on("disconnect", () => {
       console.log("Client disconnected");
+    });
+
+    // Error handling for socket events
+    socket.on("error", (err) => {
+      console.error("Socket error:", err);
     });
   });
 
   httpServer.listen(port, (err) => {
     if (err) {
-      console.error('Error starting server:', err);
+      console.error("Error starting server:", err);
       process.exit(1);
     }
     console.log(`> Ready on http://${hostname}:${port}`);
