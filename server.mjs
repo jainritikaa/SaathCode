@@ -24,29 +24,19 @@ app.prepare().then(() => {
     },
   });
 
-  let buttonState = false;
+  let code = '// Start coding...';
 
   io.on("connection", (socket) => {
     console.log("A new connection");
+    socket.emit("code_update", code);
 
-    // Emit the current button state to the newly connected client
-    socket.emit("buttonState", buttonState);
-
-    // Handle button press events from clients
-    socket.on("buttonPress", (state) => {
-      buttonState = state;
-      io.emit("buttonState", buttonState); // Broadcast the updated state to all clients
-      console.log(`Button state changed to: ${buttonState}`);
+    socket.on("code_update", (newCode) => {
+      code = newCode; // Update server-side code
+      socket.broadcast.emit("code_update", newCode); // Broadcast to all clients except the sender
     });
 
-    // Handle client disconnect
     socket.on("disconnect", () => {
       console.log("Client disconnected");
-    });
-
-    // Error handling for socket events
-    socket.on("error", (err) => {
-      console.error("Socket error:", err);
     });
   });
 

@@ -5,6 +5,7 @@ import { Navbar } from "./_components/navbar";
 import { Header } from "./_components/header";
 import { Register } from "@/app/_components/register";
 import { socket } from "../lib/socket"; // Ensure this path is correct
+import CodeEditor from "./_components/editor"; // Ensure this path is correct
 
 interface HomeProps {}
 
@@ -70,8 +71,7 @@ const Home: React.FC<HomeProps> = () => {
         />
         <div className="flex flex-col lg:flex-row lg:h-screen space-y-2 lg:space-y-0 lg:space-x-2 mr-2">
           <div className="p-4 rounded-lg w-full lg:w-auto lg:flex-1 border-r border-gray-300">
-            <h3 className="text-xl font-semibold mb-2">First Column</h3>
-            <p className="text-gray-700">Here Goes the Editor.</p>
+            <CodeEditor /> {/* Include CodeEditor component here */}
             <p>Status: {isConnected ? "connected" : "disconnected"}</p>
             <p>Transport: {transport}</p>
             <button 
@@ -82,7 +82,7 @@ const Home: React.FC<HomeProps> = () => {
             </button>
           </div>
           <div className="p-4 rounded-lg xl:w-1/3 lg:w-1/3 md:w-1/2">
-            <h3 className="text-xl font-semibold mb-2">Second Column</h3>
+            <h3 className="text-xl font-semibold mb-2">Chat</h3>
             <p className="text-gray-700">Here Goes the Chat</p>
           </div>
         </div>
