@@ -18,6 +18,15 @@ const Home: React.FC<HomeProps> = () => {
   const [imageUrl, setImageUrl] = useState<string>("https://github.com/shadcn.png");
   const [buttonState, setButtonState] = useState<boolean>(false); // Add state for button
 
+  const members = [
+  { imageUrl: "https://randomuser.me/api/portraits/men/1.jpg", fallback: "M1" },
+  { imageUrl: "https://randomuser.me/api/portraits/women/1.jpg", fallback: "W1" },
+  { imageUrl: "https://randomuser.me/api/portraits/men/2.jpg", fallback: "M2" },
+  { imageUrl: "https://randomuser.me/api/portraits/women/2.jpg", fallback: "W2" },
+  { imageUrl: "https://randomuser.me/api/portraits/men/3.jpg", fallback: "M3" },
+  { imageUrl: "https://randomuser.me/api/portraits/women/3.jpg", fallback: "W3" },
+];
+
   useEffect(() => {
     function onConnect() {
       setIsConnected(true);
@@ -62,26 +71,20 @@ const Home: React.FC<HomeProps> = () => {
   return (
     <div className="flex h-screen flex-col lg:flex-row relative">
       <Navbar />
-      <div className="flex-1 ml-20">
+      <div className="flex-1 ml-16">
         <Header
           user={user}
           isSignedIn={isSignedIn}
           imageUrl={imageUrl}
           onOpenRegister={openRegister}
+          members={members} // Pass the members array to Header component
         />
-        <div className="flex flex-col lg:flex-row lg:h-screen space-y-2 lg:space-y-0 lg:space-x-2 mr-2">
-          <div className="p-4 rounded-lg w-full lg:w-auto lg:flex-1 border-r border-gray-300">
-            <CodeEditor /> {/* Include CodeEditor component here */}
+        <div className="flex flex-col lg:flex-row-reverse lg:h-screen space-y-2 lg:space-y-0 lg:space-x-2 mr-2">
+          <div className="rounded-lg w-full lg:w-auto lg:flex-1 border-r border-gray-300">
+            <CodeEditor /> 
             <p>Status: {isConnected ? "connected" : "disconnected"}</p>
-            <p>Transport: {transport}</p>
-            <button 
-              onClick={toggleButton} 
-              className={`p-2 rounded-lg ${buttonState ? 'bg-green-500' : 'bg-red-500'}`}
-            >
-              {buttonState ? "Button Pressed" : "Button Not Pressed"}
-            </button>
           </div>
-          <div className="p-4 rounded-lg xl:w-1/3 lg:w-1/3 md:w-1/2">
+          <div className="p-2 rounded-lg xl:w-1/3 lg:w-1/3 md:w-1/2 border-r-color">
             <h3 className="text-xl font-semibold mb-2">Chat</h3>
             <p className="text-gray-700">Here Goes the Chat</p>
           </div>
@@ -98,7 +101,7 @@ const Home: React.FC<HomeProps> = () => {
             onClick={closeRegister}
             className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md"
           >
-            ×
+            x
           </button>
         </div>
       )}

@@ -24,41 +24,41 @@ export const Navbar = () => {
     };
 
     return (
-        <div className="fixed left-0 top-0 h-[calc(100vh-40px)] w-sm flex flex-col items-center justify-between bg-background border-r-color pb-8 pt-0 mt-3">
+        <div className="fixed left-0 top-0 h-full w-sm flex flex-col items-center justify-between bg-background border-r-color ">
             <div className="p-4">
-                <Image src={logoImage} alt="Home" width={34} height={2} />
+                <Image src={logoImage} alt="Home" width={31} height={2} />
             </div>
-            <div className="p-4">
+            <div className="p-1">
                 <ul className="flex items-center flex-col space-y-3">
                     <li 
                         className={`custom-hover-effect p-2 ${activeTab === 'home' ? 'active-tab' : ''}`}
                         onClick={() => handleTabClick('home')}
                     >
-                        <Image src={houseImage} alt="Home" width={24} height={21} />
+                        <Image src={houseImage} alt="Home" width={21} height={21} />
                     </li>
                     <li 
                         className={`custom-hover-effect p-2 ${activeTab === 'tag' ? 'active-tab' : ''}`}
                         onClick={() => handleTabClick('tag')}
                     >
-                        <Image src={tagImage} alt="Tag" width={20} height={22} />
+                        <Image src={tagImage} alt="Tag" width={17} height={22} />
                     </li>
                     <li 
                         className={`custom-hover-effect p-2 ${activeTab === 'settings' ? 'active-tab' : ''}`}
                         onClick={() => handleTabClick('settings')}
                     >
-                        <Image src={settingImage} alt="Settings" width={22} height={22} />
+                        <Image src={settingImage} alt="Settings" width={19} height={22} />
                     </li>
                     <li 
                         className={`custom-hover-effect p-2 ${activeTab === 'book' ? 'active-tab' : ''}`}
                         onClick={() => handleTabClick('book')}
                     >
-                        <Image src={bookImage} alt="Book" width={24} height={25} />
+                        <Image src={bookImage} alt="Book" width={21} height={25} />
                     </li>
                     <li 
                         className={`custom-hover-effect p-2 ${activeTab === 'chat' ? 'active-tab' : ''}`}
                         onClick={() => handleTabClick('chat')}
                     >
-                        <Image src={chatImage} alt="Chat" width={23} height={22} />
+                        <Image src={chatImage} alt="Chat" width={20} height={22} />
                     </li>
                 </ul>
             </div>
@@ -68,7 +68,7 @@ export const Navbar = () => {
                         className={`custom-hover-effect p-2 ${activeTab === 'logout' ? 'active-tab' : ''}`}
                         onClick={() => handleTabClick('logout')}
                     >
-                        <Image src={logoutImage} alt="Logout" width={21} height={22} />
+                        <Image src={logoutImage} alt="Logout" width={18} height={22} />
                     </li>
                 </ul>
             </div>
